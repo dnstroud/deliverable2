@@ -10,9 +10,13 @@ h1 {
 }
 
 h2 {
-    color: red;
+    color: plum;
 }
 
 p {
-    color: black;
+    color: darkmagenta;
+}
+
+table, th, td {
+    border: 1px solid;
 }
