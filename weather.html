@@ -14,12 +14,14 @@
         let selStates = null;
         let divStationsPlaceholder = null;
         let spnGetStationsStatus = null;
+        let cityInput = null;
 
         function bodyOnLoad() {
             selstates = document.getElementById("selStates");
             divStationsPlaceholder = document.getElementById("divStationsPlaceholder");
             spnGetStationsStatus = document.getElementById("spnGetStationsStatus");
             spnGetStationsStatus.innerHTML = "Stations not loaded."
+            cityInput = document.getElementById("txtCityInput");
         }
 
         function btnNWSGetStationsAsync_Click() {
@@ -62,6 +64,8 @@
     <a href="#weather">Weather Stations</a>
 
     <h1>Get Weather Stations by State</h1>
+
+    <label for="selStates">Choose State</label>
     <select id="selStates" onchange="selStates_onChange()">
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -113,10 +117,14 @@
         <option value="WV">West Virginia</option>
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
-    </select>
+    </select> 
+    <br />
 
-    <input type="button" onclick="btnNWSGetStationsAsync_Click()" value="Get Stations" />
-    <span id="spnGetStationsStatus"></span> 
+    <label for="txtCityInput">Filter by City within State</label>
+    <input id="txtCityInput" type="text" />
+    <input type="button" onclick="btnNWSGetStationsAsync_Click()" value="Get Stations" /> 
+    <br />
+    <span id="spnGetStationsStatus"></span>
     <br /><br />
     <h2>Station List</h2>
 

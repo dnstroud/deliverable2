@@ -8,6 +8,7 @@ function processXML(xmlDoc) {
 
         let station_idXML = stationsXML[x].getElementsByTagName("station_id")[0].innerHTML;
         let stateXML = stationsXML[x].getElementsByTagName("state")[0].innerHTML;
+        let cityXML = stationsXML[x].getElementsByTagName("city")[0]
         let station_nameXML = stationsXML[x].getElementsByTagName("station_name")[0].innerHTML;
         let latitudeXML = stationsXML[x].getElementsByTagName("latitude")[0].innerHTML;
         let longitudeXML = stationsXML[x].getElementsByTagName("longitude")[0].innerHTML;
@@ -16,6 +17,7 @@ function processXML(xmlDoc) {
         let station = {
             stationid: station_idXML,
             state: stateXML,
+            city: cityXML,
             stationName: station_nameXML,
             latitude: latitudeXML,
             longitude: longitudeXML,
@@ -89,6 +91,10 @@ function createTableHeader(tblArg) {
     cellStationState.appendChild(document.createTextNode("State"));
     hdrRow.appendChild(cellStationState);
 
+    let cellStationCity = hdrRow.insertCell();
+    cellStationCity.appendChild(document.createTextNode("City"));
+    hdrRow.appendChild(cellStationCity);
+
     let cellStationLat = hdrRow.insertCell();
     cellStationLat.appendChild(document.createTextNode("Latitude"));
     hdrRow.appendChild(cellStationLat);
@@ -128,7 +134,7 @@ function getWeatherByStationCallback() {
     }
 }
 
-function createTableRow(tblArg, stationIdArg, stationNameArg, stationStateArg, stationLatArg, stationLongArg) {
+function createTableRow(tblArg, stationIdArg, stationNameArg, stationStateArg, stationCityArg, stationLatArg, stationLongArg) {
     let curRow = tblArg.insertRow();
     let inButtonSelect = document.createElement("input");
     inButtonSelect.setAttribute("type", "button");
@@ -151,6 +157,10 @@ function createTableRow(tblArg, stationIdArg, stationNameArg, stationStateArg, s
     cellStationState.appendChild(document.createTextNode(stationStateArg));
     curRow.appendChild(cellStationState);
 
+    let cellStationCity = curRow.insertCell();
+    cellStationCity.appendChild(document.createTextNode(stationCityArg));
+    curRow.appendChild(cellStationCity);
+
     let cellStationLat = curRow.insertCell();
     cellStationLat.appendChild(document.createTextNode(stationLatArg));
     curRow.appendChild(cellStationLat);
@@ -172,6 +182,7 @@ function displayStationTable(stationsList, divAttach) {
             stationsList[x].stationid,
             stationsList[x].stationName,
             stationsList[x].state,
+            stationsList[x].city,
             stationsList[x].latitude,
             stationsList[x].longitude);
     }
